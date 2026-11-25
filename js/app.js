@@ -61,7 +61,10 @@ function crearCard(item) {
 // Si la lista está vacía, devuelve un mensaje (por ejemplo un <p>) que
 // diga que no hay resultados.
 function generarHTML(lista) {
-
+  if (!Array.isArray(lista) || lista.length === 0) {
+    return '<div class="col-12"><p class="text-center py-4 mb-0">No se encontraron productos que coincidan con tu búsqueda.</p></div>';
+  }
+  return lista.map(crearCard).join('');
 }
 
 /* ---------------------------------------------------------------
