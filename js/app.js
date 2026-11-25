@@ -75,14 +75,24 @@ function generarHTML(lista) {
 // TODO: devuelve solo los elementos de esa categoría.
 // Si categoria es 'todas', devuelve todos.
 function filtrarPorCategoria(lista, categoria) {
-
+  if (!categoria || categoria === 'todas') {
+    return [...lista];
+  }
+  return lista.filter((item) => item.categoria === categoria);
 }
 
 // TODO: devuelve los elementos cuyo nombre o descripcion contienen el
 // texto, sin importar mayúsculas ni espacios al inicio o al final.
 // Si el texto está vacío, devuelve todos.
 function buscarPorTexto(lista, texto) {
-
+  const consulta = String(texto || '').trim().toLowerCase();
+  if (!consulta) {
+    return [...lista];
+  }
+  return lista.filter((item) =>
+    item.nombre.toLowerCase().includes(consulta) ||
+    item.descripcion.toLowerCase().includes(consulta)
+  );
 }
 
 // TODO: devuelve una COPIA ordenada según el criterio:
@@ -90,13 +100,23 @@ function buscarPorTexto(lista, texto) {
 //   'valor-asc'   de menor a mayor según item[configuracion.campoOrden]
 //   'valor-desc'  de mayor a menor
 function ordenarItems(lista, criterio) {
-
+  const copia = [...lista];
+  const campo = configuracion.campoOrden;
+  if (criterio === 'valor-asc') {
+    return copia.sort((a, b) => a[campo] - b[campo]);
+  }
+  if (criterio === 'valor-desc') {
+    return copia.sort((a, b) => b[campo] - a[campo]);
+  }
+  return copia.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 }
 
 // TODO: aplica las tres funciones anteriores en cadena según el estado
 // ({ categoria, texto, orden }) y devuelve la lista resultante.
 function aplicarFiltros(lista, estadoActual) {
-
+  const filtrados = filtrarPorCategoria(lista, estadoActual.categoria);
+  const buscados = buscarPorTexto(filtrados, estadoActual.texto);
+  return ordenarItems(buscados, estadoActual.orden);
 }
 
 /* ---------------------------------------------------------------
