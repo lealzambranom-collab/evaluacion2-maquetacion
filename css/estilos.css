@@ -1,38 +1,142 @@
 /*
- * estilos.css - Guía de estilo de tu proyecto
- * Se enlaza DESPUÉS de Bootstrap, por eso puede personalizarlo.
- *
- * TODO (issue #1): aplica la guía de diseño de tu empresa (Manual de marca).
- * Los colores y las fuentes NO se eligen: se copian exactos del manual.
- *
- * 1. En :root, estas variables:
- *      --marca-primario    botones activos y acentos (texto blanco encima: contraste 4.5:1)
- *      --marca-secundario  detalles, bordes, badges
- *      --marca-fondo       fondo de la página
- *      --marca-texto       texto principal (contraste 4.5:1 sobre el fondo)
- *      --marca-fuente          fuente del cuerpo del texto (de Google Fonts)
- *      --marca-fuente-titulos  fuente de los títulos (de Google Fonts)
- *
- * 2. Conecta tu marca con Bootstrap sobrescribiendo sus variables:
- *      --bs-body-bg, --bs-body-color y --bs-body-font-family con var(--marca-...)
- *
- * 3. Personaliza el botón de los filtros con al menos 3 variables --bs-btn-*
- *    (por ejemplo --bs-btn-color, --bs-btn-border-color, --bs-btn-active-bg).
- *
- * 4. Aplica la fuente de títulos: h1, h2, h3 { font-family: var(--marca-fuente-titulos); }
- *
- * 5. Colorea la navbar como dice tu manual (.navbar { background-color: ... }).
- *
- * 6. Agrega una regla :focus-visible. Nunca uses outline: none.
- *
- * Consulta:
- *   https://developer.mozilla.org/es/docs/Web/CSS/Using_CSS_custom_properties
- *   https://getbootstrap.com/docs/5.3/customize/css-variables/
- *   https://getbootstrap.com/docs/5.3/components/buttons/#variables
- *   https://webaim.org/resources/contrastchecker/
- *   https://fonts.google.com/
+ * estilos.css - Guía de diseño de Horno de la Abuela (Tema 13)
+ * Se enlaza DESPUÉS de Bootstrap 5.3 para personalizar sus variables.
  */
 
 :root {
-  /* TODO */
+  --marca-primario: #8a4b20;
+  --marca-secundario: #e8b04b;
+  --marca-fondo: #fffaf2;
+  --marca-texto: #33241a;
+  --marca-fuente: 'Open Sans', sans-serif;
+  --marca-fuente-titulos: 'Fredoka', sans-serif;
+
+  --bs-body-bg: var(--marca-fondo);
+  --bs-body-color: var(--marca-texto);
+  --bs-body-font-family: var(--marca-fuente);
+}
+
+h1, h2, h3 {
+  font-family: var(--marca-fuente-titulos);
+  color: var(--marca-texto);
+}
+
+/* Navbar clara con borde inferior del color secundario */
+.navbar {
+  background-color: var(--marca-fondo);
+  border-bottom: 3px solid var(--marca-secundario);
+}
+
+.navbar-brand {
+  font-family: var(--marca-fuente-titulos);
+  color: var(--marca-primario);
+  font-size: 1.35rem;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus-visible {
+  color: var(--marca-primario);
+}
+
+.nav-link {
+  color: var(--marca-texto);
+  font-weight: 600;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--marca-primario);
+}
+
+/* Sección de presentación centrada con tono cálido */
+.hero {
+  background-color: rgba(138, 75, 32, 0.06);
+  border-bottom: 1px solid rgba(232, 176, 75, 0.45);
+}
+
+/* Botón principal con color primario y texto blanco */
+.btn-primary {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--marca-primario);
+  --bs-btn-border-color: var(--marca-primario);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #6f3b18;
+  --bs-btn-hover-border-color: #6f3b18;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #6f3b18;
+  --bs-btn-active-border-color: #6f3b18;
+  --bs-btn-focus-shadow-rgb: 138, 75, 32;
+}
+
+/* Botón de filtro personalizado con variables de Bootstrap */
+.btn-outline-primary {
+  --bs-btn-color: var(--marca-primario);
+  --bs-btn-border-color: var(--marca-primario);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--marca-primario);
+  --bs-btn-hover-border-color: var(--marca-primario);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--marca-primario);
+  --bs-btn-active-border-color: var(--marca-primario);
+  --bs-btn-focus-shadow-rgb: 138, 75, 32;
+}
+
+.btn-outline-primary[aria-pressed="true"] {
+  background-color: var(--marca-primario);
+  border-color: var(--marca-primario);
+  color: #ffffff;
+}
+
+/* Evita desbordamiento horizontal en pantallas de 360 px */
+.btn-group {
+  flex-wrap: wrap;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tarjetas del catálogo */
+.card {
+  border-color: rgba(232, 176, 75, 0.55);
+  background-color: #ffffff;
+}
+
+.card-img-top {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.badge-categoria {
+  background-color: var(--marca-secundario);
+  color: var(--marca-texto);
+  font-weight: 600;
+}
+
+.precio-producto {
+  color: var(--marca-primario);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* Sección acerca de */
+.seccion-acerca {
+  background-color: rgba(232, 176, 75, 0.1);
+}
+
+/* Pie de página con el color oscuro de texto de la marca */
+.pie-pagina {
+  background-color: var(--marca-texto);
+  color: var(--marca-fondo);
+}
+
+.pie-pagina a {
+  color: var(--marca-secundario);
+}
+
+/* Foco visible accesible sin eliminar outline */
+:focus-visible {
+  outline: 3px solid var(--marca-secundario);
+  outline-offset: 2px;
 }
