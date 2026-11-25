@@ -123,21 +123,49 @@ function aplicarFiltros(lista, estadoActual) {
  * Issue #4 - Eventos (estas sí usan el DOM)
  * --------------------------------------------------------------- */
 
-// TODO: calcula la lista con aplicarFiltros(items, estado), pinta el
-// resultado en #catalogo con innerHTML y actualiza #contador
-// (por ejemplo "Mostrando 5 de 12 resultados").
 function actualizarVista() {
+  const resultados = aplicarFiltros(items, estado);
+  const catalogo = document.getElementById('catalogo');
+  const contador = document.getElementById('contador');
 
+  if (catalogo) {
+    catalogo.innerHTML = generarHTML(resultados);
+  }
+  if (contador) {
+    contador.textContent = `Mostrando ${resultados.length} de ${items.length}`;
+  }
 }
 
-// TODO: conecta los eventos y pinta por primera vez.
-//   click  en cada botón con data-categoria: actualiza estado.categoria
-//          y aria-pressed ("true" en el elegido, "false" en los demás)
-//   input  en #buscador: actualiza estado.texto
-//   change en #orden: actualiza estado.orden
-// Después de cada cambio llama a actualizarVista().
 function iniciar() {
+  const botonesCategoria = document.querySelectorAll('[data-categoria]');
+  const buscador = document.getElementById('buscador');
+  const selectorOrden = document.getElementById('orden');
 
+  botonesCategoria.forEach((boton) => {
+    boton.addEventListener('click', () => {
+      estado.categoria = boton.getAttribute('data-categoria') || 'todas';
+      botonesCategoria.forEach((b) => {
+        b.setAttribute('aria-pressed', b === boton ? 'true' : 'false');
+      });
+      actualizarVista();
+    });
+  });
+
+  if (buscador) {
+    buscador.addEventListener('input', () => {
+      estado.texto = buscador.value;
+      actualizarVista();
+    });
+  }
+
+  if (selectorOrden) {
+    selectorOrden.addEventListener('change', () => {
+      estado.orden = selectorOrden.value;
+      actualizarVista();
+    });
+  }
+
+  actualizarVista();
 }
 
 // No cambies estas líneas: así el archivo también carga en el verificador,
