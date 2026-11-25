@@ -35,7 +35,26 @@ const estado = {
 // un badge con la categoría, la descripción, el valor de
 // item[configuracion.campoOrden] con su etiqueta, y tus 2 campos propios.
 function crearCard(item) {
-
+  const valorFormateado = Number(item[configuracion.campoOrden]).toLocaleString('es-CO');
+  return `
+    <div class="col">
+      <article class="card h-100 rounded-4 shadow-sm">
+        <img src="${item.imagen}" class="card-img-top rounded-top-4" alt="${item.nombre} de Horno de la Abuela">
+        <div class="card-body d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+            <h3 class="card-title h5 mb-0">${item.nombre}</h3>
+            <span class="badge badge-categoria text-capitalize">${item.categoria}</span>
+          </div>
+          <p class="card-text flex-grow-1">${item.descripcion}</p>
+          <ul class="list-unstyled small mb-3">
+            <li><strong>Peso:</strong> ${item.peso}</li>
+            <li><strong>Sin azúcar:</strong> ${item.sinAzucar}</li>
+          </ul>
+          <p class="precio-producto mb-0">${configuracion.etiquetaValor}: $${valorFormateado}</p>
+        </div>
+      </article>
+    </div>
+  `;
 }
 
 // TODO: devuelve el HTML de TODAS las tarjetas de la lista (map + join).
