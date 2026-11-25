@@ -1,47 +1,134 @@
 /*
- * datos.js - Los datos de tu tema
+ * datos.js - Catálogo de productos de Horno de la Abuela
  * Los datos viven aquí, separados de la interfaz. app.js los recorre
- * y construye las tarjetas: nunca se escriben tarjetas a mano en el HTML.
- *
- * TODO (issue #1):
- *
- * 1. Completa configuracion:
- *      titulo         nombre de tu proyecto
- *      campoOrden     nombre de la propiedad NUMÉRICA que se usa para ordenar
- *                     (precio, duracionMinutos, paginas...). Se elige en la guía.
- *      etiquetaValor  cómo se muestra ese número en la tarjeta ("Precio", "Duración")
- *
- * 2. Llena items con los 12 elementos de la página de Contenido de tu
- *    empresa en el Manual de marca (nombres, categorías y valores exactos).
- *    TODOS con las mismas propiedades:
- *      id           número, único
- *      nombre       texto
- *      categoria    texto (mínimo 3 categorías, cada una con 2 o más elementos)
- *      descripcion  texto corto
- *      imagen       ruta en img/ (que exista) o URL que empiece por https://
- *      la propiedad de campoOrden (número)
- *      y los 2 campos propios que indica tu tema en la guía
- *
- * La información es ficticia: la entrega la empresa en el manual.
- * Puedes usar img/placeholder.svg mientras consigues imágenes.
+ * y construye las tarjetas dinámicamente.
  */
 
 const configuracion = {
-  titulo: '',
-  campoOrden: '',
-  etiquetaValor: ''
+  titulo: 'Horno de la Abuela',
+  campoOrden: 'precio',
+  etiquetaValor: 'Precio'
 };
 
 const items = [
-  // Ejemplo de la forma (tema Mercado campesino). Bórralo y escribe los tuyos.
-  // {
-  //   id: 1,
-  //   nombre: 'Mora de Castilla',
-  //   categoria: 'frutas',
-  //   descripcion: 'Mora fresca de las veredas de Santa Rosa de Cabal.',
-  //   imagen: 'img/placeholder.svg',
-  //   precio: 6500,
-  //   unidad: 'libra',
-  //   municipio: 'Santa Rosa de Cabal'
-  // },
+  {
+    id: 1,
+    nombre: 'Pan de bono',
+    categoria: 'panes',
+    descripcion: 'Pan de queso y almidón, recién salido.',
+    imagen: 'img/placeholder.svg',
+    precio: 1500,
+    peso: '60 g',
+    sinAzucar: 'no'
+  },
+  {
+    id: 2,
+    nombre: 'Pan blandito',
+    categoria: 'panes',
+    descripcion: 'Pan suave y dulce para el desayuno.',
+    imagen: 'img/placeholder.svg',
+    precio: 600,
+    peso: '40 g',
+    sinAzucar: 'no'
+  },
+  {
+    id: 3,
+    nombre: 'Pan integral',
+    categoria: 'panes',
+    descripcion: 'Hecho con harina integral y semillas.',
+    imagen: 'img/placeholder.svg',
+    precio: 6500,
+    peso: '500 g',
+    sinAzucar: 'sí'
+  },
+  {
+    id: 4,
+    nombre: 'Torta de naranja',
+    categoria: 'tortas',
+    descripcion: 'Húmeda y con glaseado de naranja.',
+    imagen: 'img/placeholder.svg',
+    precio: 28000,
+    peso: '1 kg',
+    sinAzucar: 'no'
+  },
+  {
+    id: 5,
+    nombre: 'Torta negra',
+    categoria: 'tortas',
+    descripcion: 'Con frutas y vino, receta de diciembre.',
+    imagen: 'img/placeholder.svg',
+    precio: 45000,
+    peso: '1 kg',
+    sinAzucar: 'no'
+  },
+  {
+    id: 6,
+    nombre: 'Torta de zanahoria',
+    categoria: 'tortas',
+    descripcion: 'Con nueces y endulzada con stevia.',
+    imagen: 'img/placeholder.svg',
+    precio: 32000,
+    peso: '1 kg',
+    sinAzucar: 'sí'
+  },
+  {
+    id: 7,
+    nombre: 'Galletas de avena',
+    categoria: 'galletas',
+    descripcion: 'Crocantes, con avena y uvas pasas.',
+    imagen: 'img/placeholder.svg',
+    precio: 5000,
+    peso: '200 g',
+    sinAzucar: 'sí'
+  },
+  {
+    id: 8,
+    nombre: 'Polvorosas',
+    categoria: 'galletas',
+    descripcion: 'Galletas de mantequilla que se deshacen.',
+    imagen: 'img/placeholder.svg',
+    precio: 6000,
+    peso: '200 g',
+    sinAzucar: 'no'
+  },
+  {
+    id: 9,
+    nombre: 'Galletas de chocolate',
+    categoria: 'galletas',
+    descripcion: 'Con trozos de chocolate.',
+    imagen: 'img/placeholder.svg',
+    precio: 7000,
+    peso: '200 g',
+    sinAzucar: 'no'
+  },
+  {
+    id: 10,
+    nombre: 'Chocolate caliente',
+    categoria: 'bebidas',
+    descripcion: 'Chocolate en leche batido con molinillo.',
+    imagen: 'img/placeholder.svg',
+    precio: 3500,
+    peso: '250 ml',
+    sinAzucar: 'no'
+  },
+  {
+    id: 11,
+    nombre: 'Café con leche',
+    categoria: 'bebidas',
+    descripcion: 'Café de la región con leche espumada.',
+    imagen: 'img/placeholder.svg',
+    precio: 3000,
+    peso: '250 ml',
+    sinAzucar: 'no'
+  },
+  {
+    id: 12,
+    nombre: 'Té de frutos rojos',
+    categoria: 'bebidas',
+    descripcion: 'Infusión caliente sin azúcar.',
+    imagen: 'img/placeholder.svg',
+    precio: 3000,
+    peso: '250 ml',
+    sinAzucar: 'sí'
+  }
 ];
